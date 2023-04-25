@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {
+  getFirestore,
+  CollectionReference,
+  collection,
+  DocumentData,
+} from "firebase/firestore";
+import { User } from "./types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDkrJTU1ClS8KDBtnwX1VaFVaI1TDRXuFo",
@@ -12,4 +18,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore();
+export const fireStore = getFirestore();
+
+const createCollection = <T = DocumentData>(collectionName: string) => {
+  return collection(fireStore, collectionName) as CollectionReference<T>;
+};
+
+export const usersCol = createCollection<User>("users");
