@@ -115,7 +115,7 @@ const Button = styled.button<ButtonProps>`
     font-size: 0.9rem;
     padding: 0.4rem 1rem;
     border-radius: 8px;
-    gap: 0.125px;
+    gap: 0.125rem;
   }
 
   @media screen and (max-width: 576px) {
