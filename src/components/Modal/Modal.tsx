@@ -1,9 +1,9 @@
 // Import necessary dependencies and components
 import React from "react";
-import styled from "styled-components";
-import { User } from "../types";
-import FormComponent from "./Form";
+import { User } from "../../types";
+import FormComponent from "../Form/Form";
 import { MdClose } from "react-icons/md";
+import { ModalBackdrop, ModalCloseButton, ModalContent } from "./modal.style";
 
 //Type definition
 interface ModalProps {
@@ -20,45 +20,6 @@ interface ModalProps {
   >;
 }
 
-// Styled components
-export const ModalBackdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const ModalContent = styled.div`
-  background-color: var(--white);
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  position: relative;
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--gray-800);
-  }
-`;
-
-const ModalCloseButton = styled.button`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  padding: 4px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 16px;
-`;
-
 // Component definition
 const Modal: React.FC<ModalProps> = ({
   isOpen,
@@ -66,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   user,
   setIsConfirmationModalOpen,
   setActions,
+  ...rest
 }) => {
   const openModal = (val: User, action: string) => {
     setIsConfirmationModalOpen(true);
@@ -76,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <>
       <ModalBackdrop>
-        <ModalContent>
+        <ModalContent {...rest}>
           <ModalCloseButton onClick={onClose}>
             {" "}
             <MdClose />

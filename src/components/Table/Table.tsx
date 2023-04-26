@@ -1,90 +1,27 @@
 // Import necessary dependencies and components
 import { useState, useRef } from "react";
-import styled from "styled-components";
-import { User } from "../types";
-import Button from "./Button";
-import Modal from "./Modal";
-import ConfirmationModal from "./ConfirmationModal";
+import { User, TableProps, Actions, ButtonRef } from "../../types";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteUser, updateUser, createUser } from "../api/users";
-import { Link } from "react-router-dom";
+import { deleteUser, updateUser, createUser } from "../../api/users";
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-// Styled components
-const Table = styled.table`
-  width: 100%;
-  border-spacing: 0;
-  margin-bottom: 1.563rem;
-`;
-
-const TableHeader = styled.th`
-  padding: 1rem;
-  text-align: left;
-  margin: 0;
-  font-weight: bold;
-  text-align: left;
-  border-bottom: 2px solid var(--gray-300);
-  color: var(--gray-500);
-  @media (prefers-color-scheme: dark) {
-    border-color: var(--gray-700);
-    color: var(--gray-700);
-  }
-`;
-
-const TableData = styled.td`
-  padding: 1rem;
-  border-bottom: 2px solid var(--gray-300);
-  margin: 0;
-  @media (prefers-color-scheme: dark) {
-    border-color: var(--gray-700);
-  }
-`;
-
-const TableRow = styled.tr`
-  &:nth-child(even) {
-    background-color: var(--gray-300);
-    @media (prefers-color-scheme: dark) {
-      border-color: var(--gray-700);
-
-      background-color: var(--gray-600);
-    }
-  }
-`;
-const ActionWrapper = styled.div`
-  margin-top: 1.66rem;
-  display: flex;
-  gap: 10px;
-`;
-
-const StyledLink = styled(Link)`
-  color: var(--blue);
-  text-decoration: none;
-  &:hover {
-    color: var(--blue-500);
-    text-decoration: underline;
-  }
-`;
-
-//Type definitions
-interface Props {
-  data: User[];
-}
-interface Actions {
-  value: User | null;
-  action: string;
-  message: string;
-}
-type ButtonRef =
-  | ((instance: HTMLButtonElement | null) => void)
-  | React.RefObject<HTMLButtonElement>
-  | null
-  | undefined;
+import {
+  Table,
+  TableData,
+  TableHeader,
+  TableRow,
+  ActionWrapper,
+  StyledLink,
+} from "./table.style";
 
 const initialActionValues = { value: null, action: "", message: "" };
 
 // Component definition
-const ComponentTable = ({ data }: Props) => {
+const ComponentTable = ({ data }: TableProps) => {
   const queryClient = useQueryClient();
   const onError = (error: unknown) => {
     toast.warn("Something went wrong!");

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { AnyObject } from "yup";
 
 export default function ErrorPage({ error }: AnyObject) {

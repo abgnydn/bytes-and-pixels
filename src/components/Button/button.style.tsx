@@ -1,21 +1,5 @@
-// Import necessary dependencies and components
 import styled, { css } from "styled-components";
-import { FaPlus, FaTrash, FaEdit, FaArrowLeft } from "react-icons/fa";
-
-//Type definitions
-type ButtonVariant = "add" | "delete" | "edit" | "back" | "yes" | "no";
-
-interface ButtonProps {
-  variant?: ButtonVariant;
-  children?: React.ReactNode;
-  type?: "button" | "submit" | "reset";
-  onClick?: () => void;
-  buttonRef?:
-    | ((instance: HTMLButtonElement | null) => void)
-    | React.RefObject<HTMLButtonElement>
-    | null
-    | undefined;
-}
+import { ButtonProps } from "../../types";
 
 // Styled components
 const Button = styled.button<ButtonProps>`
@@ -23,8 +7,8 @@ const Button = styled.button<ButtonProps>`
   font-size: 1rem;
   border-radius: 10px;
   background-color: var(--gray-700);
-  border: 2px solid var(--gray-400);
-  color: white;
+  border: 0.125rem solid var(--gray-400);
+  color: var(--white);
   text-decoration: none;
   font-weight: bold;
   margin-bottom: 1rem;
@@ -33,7 +17,7 @@ const Button = styled.button<ButtonProps>`
   appearance: none;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.325rem;
   line-height: initial;
   text-transform: uppercase;
   transition: background-color 200ms ease-in-out, border 200ms ease-in-out,
@@ -54,7 +38,7 @@ const Button = styled.button<ButtonProps>`
   }
   @media (prefers-color-scheme: dark) {
      {
-      border: 2px solid var(--gray-800);
+      border: 0.125rem solid var(--gray-800);
       color: var(--gray-800);
     }
   }
@@ -131,14 +115,14 @@ const Button = styled.button<ButtonProps>`
     font-size: 0.9rem;
     padding: 0.4rem 1rem;
     border-radius: 8px;
-    gap: 3px;
+    gap: 0.125rem;
   }
 
   @media screen and (max-width: 576px) {
     font-size: 0.8rem;
     padding: 0.3rem 0.8rem;
     border-radius: 6px;
-    gap: 2px;
+    gap: 01.25rem;
   }
 `;
 
@@ -147,35 +131,4 @@ const Icon = styled.span`
   align-items: center;
 `;
 
-// Component definition
-const ButtonComponent = ({
-  variant,
-  type,
-  children = type || variant,
-  onClick,
-  buttonRef,
-}: ButtonProps) => {
-  const getIcon = () => {
-    switch (variant) {
-      case "add":
-        return <FaPlus />;
-      case "delete":
-        return <FaTrash />;
-      case "edit":
-        return <FaEdit />;
-      case "back":
-        return <FaArrowLeft />;
-      default:
-        return null;
-    }
-  };
-
-  return (
-    <Button variant={variant} onClick={onClick} type={type} ref={buttonRef}>
-      {getIcon() && <Icon>{getIcon()}</Icon>}
-      {children}
-    </Button>
-  );
-};
-
-export default ButtonComponent;
+export { Icon, Button };
