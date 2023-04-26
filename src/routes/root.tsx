@@ -1,9 +1,9 @@
 // Import necessary dependencies and components
 import { useQuery } from "@tanstack/react-query";
-import Table from "../components/Table";
+import Table from "../components/Table/Table";
 import { getUsers } from "../api/users";
 import ErrorPage from "../error-page";
-import Spinner from "../components/Spinner";
+import Spinner from "../components/Spinner/Spinner";
 
 // Component definition
 export default function Root() {

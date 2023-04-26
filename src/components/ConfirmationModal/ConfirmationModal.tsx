@@ -1,37 +1,9 @@
 // Import necessary dependencies and components
 import React from "react";
-import styled from "styled-components";
-import { ModalBackdrop, ModalContent } from "./Modal";
-import Button from "./Button";
-
-//Type definition
-interface ConfirmationModalProps {
-  isOpen: boolean;
-  onConfirm: () => void;
-  onCancel: () => void;
-  message: string;
-  buttonRef?:
-    | ((instance: HTMLButtonElement | null) => void)
-    | React.RefObject<HTMLButtonElement>
-    | null
-    | undefined;
-}
-
-// Styled components
-const ModalText = styled.p`
-  font-size: 16px;
-  margin: 0;
-  text-align: center;
-  padding: 16px;
-`;
-
-const ModalActions = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-`;
+import Button from "../Button/Button";
+import { ModalBackdrop, ModalContent } from "../Modal/modal.style";
+import { ModalActions, ModalText } from "./confirmationModal.style";
+import { ConfirmationModalProps } from "../../types";
 
 // Component definition
 const ConfirmationModal: React.FC<ConfirmationModalProps> = ({

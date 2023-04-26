@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getUser } from "../api/users";
 import ErrorPage from "../error-page";
 import styled, { keyframes } from "styled-components";
-import Button from "../components/Button";
-import Spinner from "../components/Spinner";
+import Button from "../components/Button/Button";
+import Spinner from "../components/Spinner/Spinner";
 
 // Keyframes for animation
 const rainbowAnimation = keyframes`
@@ -34,7 +34,7 @@ const rainbowAnimation = keyframes`
 
 // Styled components
 const CardContainer = styled.div`
-  border: 5px solid #ff0000;
+  border: 0.3125rem solid #ff0000;
   animation: ${rainbowAnimation} 8s ease-in-out infinite;
   transition: border 4s ease-in-out;
   border-radius: 10px;
@@ -44,7 +44,7 @@ const CardContainer = styled.div`
 `;
 
 const UserInfo = styled.div`
-  margin-top: 10px;
+  margin-top: 0.625rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -55,7 +55,7 @@ const Label = styled.span`
 `;
 
 const Value = styled.span`
-  margin-left: 5px;
+  margin-left: 0.3125;
 `;
 
 // Component definition

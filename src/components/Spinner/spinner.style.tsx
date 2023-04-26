@@ -23,12 +23,4 @@ const Spinner = styled(FaSpinner)`
   animation: ${spinAnimation} 1s linear infinite;
   font-size: 3rem;
 `;
-
-// Component definition
-export default function SpinnerComponent() {
-  return (
-    <SpinnerWrapper>
-      <Spinner />
-    </SpinnerWrapper>
-  );
-}
+export { SpinnerWrapper, Spinner };

@@ -1,13 +1,8 @@
 import { Formik, Form } from "formik";
-import TextInput from "./TextInput";
+import TextInput from "../TextInput/TextInput";
 import * as Yup from "yup";
-import Button from "./Button";
-import styled from "styled-components";
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
+import Button from "../Button/Button";
+import { ButtonContainer } from "./form.style";
 
 const FormComponent = ({ ...props }) => {
   const { user, onSubmit, title, action, ...rest } = props;
@@ -32,6 +27,7 @@ const FormComponent = ({ ...props }) => {
           await onSubmit(values);
           setSubmitting(false);
         }}
+        {...rest}
       >
         <Form>
           <TextInput

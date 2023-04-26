@@ -83,9 +83,9 @@ body {
 
 @media (prefers-color-scheme: dark) {
   body {
-    color: white;
+    color: var(--white);
     background-color: var(--gray-900);
-    caret-color: white;
+    caret-color: var(--white);
   }
 }
 
