@@ -17,17 +17,8 @@ const getUsers = async () => {
 
 const getUser = async (userId: string) => {
   const userDocRef = doc(fireStore, "users", userId);
-
-  try {
-    const docSnap = await getDoc(userDocRef);
-    if (docSnap.exists()) {
-      return docSnap.data();
-    } else {
-      console.log("Document does not exist");
-    }
-  } catch (error) {
-    console.log(error);
-  }
+  const docSnap = await getDoc(userDocRef);
+  return docSnap.data();
 };
 
 const createUser = async (user: User) => {
