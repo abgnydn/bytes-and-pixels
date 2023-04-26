@@ -27,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   user,
   setIsConfirmationModalOpen,
   setActions,
+  ...rest
 }) => {
   const openModal = (val: User, action: string) => {
     setIsConfirmationModalOpen(true);
@@ -37,7 +38,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <>
       <ModalBackdrop>
-        <ModalContent>
+        <ModalContent {...rest}>
           <ModalCloseButton onClick={onClose}>
             {" "}
             <MdClose />
